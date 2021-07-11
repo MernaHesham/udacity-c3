@@ -1,2 +1,6 @@
+[core]
+    remote = myremote
 ['remote "driverremote"']
     url = gdrive://1Fk0ZzMvVGgjUNE-_poH0P4gcaQ79chFk
+['remote "myremote"']
+    url = s3://udacity-mlops/data

@@ -3,11 +3,11 @@ from joblib import load
 from model import inference
 from data import process_data
 from pydantic import BaseModel
-
+from typing import List
 import pandas as pd
+import os
+import numpy as np
 app = FastAPI()
-
-
 
 cat_features = [
     "workclass",
@@ -70,15 +70,14 @@ async def welcome():
 
 @app.post("/predict")
 def inference( X: features):
-    data_dict = features.dict(Self)
+    data_dict = features
     model = load('model.joblib')
     encoder = load('encoder.joblib')
     lb = load('lb.joblib')
-    data = pd.DataFrame.from_dict(data_dict, orient='index')
+    data = pd.DataFrame.from_dict(features, orient='index')
     X_test, y_test, encoder,lb = process_data(
     data, categorical_features=cat_features, training=False, encoder= encoder, lb= lb
     )
-
     pred = inference(model, X_test)
     if pred == 0:
         return {"Income": "<=50k"}

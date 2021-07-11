@@ -49,5 +49,6 @@ print(model)
 
 dump(model, 'model.joblib') # save the model
 dump(encoder, 'encoder.joblib') # save the model
+dump(lb, 'lb.joblib') # save the model
 
 slice_metrics(test, cat_features, model, encoder, lb)

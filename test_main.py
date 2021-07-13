@@ -40,7 +40,7 @@ def test_post_path_1():
 
 def test_post_path_2():
     input_dict = {"input_row": salary_morethan50_sample}
-    response = client.post("/predict", json=input_dict)
+    r = client.post("/predict", json=input_dict)
     assert r.status_code == 200
     assert json.loads(r.text)["Salary"] == "<= 50k"
 

@@ -36,11 +36,11 @@ def test_post_path_1():
     input_dict = {"input": salary_lessthan50_sample}
     r = client.post("/predict", json=input_dict)
     assert r.status_code == 200
-    assert json.loads(response.text)["Salary"] == "> 50k"
+    assert json.loads(r.text)["Salary"] == "> 50k"
 
 def test_post_path_2():
     input_dict = {"input_row": salary_morethan50_sample}
     response = client.post("/predict", json=input_dict)
-    assert response.status_code == 200
-    assert json.loads(response.text)["Salary"] == "<= 50k"
+    assert r.status_code == 200
+    assert json.loads(r.text)["Salary"] == "<= 50k"
 

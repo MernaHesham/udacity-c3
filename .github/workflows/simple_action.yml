@@ -61,5 +61,10 @@ jobs:
           aws-region: us-east-1
           
       - uses: iterative/setup-dvc@v1
+        run: |
+          dvc pull
       
-      
+      - name: Test with pytest
+        run: |
+          pytest
+

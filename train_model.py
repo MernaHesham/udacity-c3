@@ -9,7 +9,7 @@ from model import train_model, slice_metrics, inference, compute_model_metrics
 from joblib import dump, load
 
 # Add code to load in the data.
-data = pd.read_csv('data/census_modified.csv', index_col=0)
+data = pd.read_csv('census_modified.csv', index_col=0)
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(data, test_size=0.20)

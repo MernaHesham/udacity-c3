@@ -7,7 +7,7 @@ from joblib import load
 
 
 def test_train_model():
-    data = pd.read_csv('data/census_modified.csv', index_col=0)
+    data = pd.read_csv('census_modified.csv', index_col=0)
     train, test = train_test_split(data, test_size=0.20)
     cat_features = [
     "workclass",
@@ -27,7 +27,7 @@ def test_train_model():
 
 
 def test_compute_model_metrics():
-    data = pd.read_csv('data/census_modified.csv', index_col=0)
+    data = pd.read_csv('census_modified.csv', index_col=0)
     model = load('model.joblib')
     train, test = train_test_split(data, test_size=0.20)
     cat_features = [
@@ -54,7 +54,7 @@ def test_compute_model_metrics():
 
 
 def test_inference():
-    data = pd.read_csv('data/census_modified.csv', index_col=0)
+    data = pd.read_csv('census_modified.csv', index_col=0)
     model = load('model.joblib')
     train, test = train_test_split(data, test_size=0.20)
     cat_features = [

@@ -8,7 +8,7 @@ import pandas as pd
 import os
 import numpy as np
 app = FastAPI()
-
+import logging
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
@@ -32,19 +32,19 @@ def to_format(string: str) -> str:
 
 class features(BaseModel):
     age: int = Field(example=50)
-    workclass: str = Field(example='45')
-    flngt: int = Field(example=45)
-    education: str = Field(example='45')
-    education_num: int = Field(example=45)
-    marital_status: str = Field(example='45')
-    occupation: str = Field(example='45')
-    relationship: str = Field(example='45')
-    race: str = Field(example='45')
-    sex: str = Field(example='45')
-    capital_gain: int = Field(example=45)
-    capital_loss: int = Field(example=45)
-    hours_per_week: int = Field(example=45)
-    native_country: str = Field(example='45')
+    workclass: str = Field(example="Self-emp-not-inc")
+    flngt: int = Field(example=83311)
+    education: str = Field(example='Bachelors')
+    education_num: int = Field(example=13)
+    marital_status: str = Field(example='Married-civ-spouse')
+    occupation: str = Field(example='Exec-managerial')
+    relationship: str = Field(example='Husband')
+    race: str = Field(example='White')
+    sex: str = Field(example='Male')
+    capital_gain: int = Field(example=0)
+    capital_loss: int = Field(example=0)
+    hours_per_week: int = Field(example=13)
+    native_country: str = Field(example='United-States')
 
     class Config:
         # to change the col names into the formated params
@@ -106,6 +106,7 @@ async def welcome():
 def inference( X: features):
     
     data_dict = X.dict()
+    
     model = load('model.joblib')
     encoder = load('encoder.joblib')
     lb = load('lb.joblib')
@@ -113,7 +114,7 @@ def inference( X: features):
     X_test, y_test, encoder,lb = process_data(
     data, categorical_features=cat_features, training=False, encoder= encoder, lb= lb
     )
-    pred = inference(model, X_test)
+    pred = model.predict(X_test)
     if pred == 0:
         return {"Income": "<=50k"}
     elif pred == 1:

@@ -17,3 +17,9 @@ for the next rubric. I added the dict data as suggested.
 I have fixed the heroku app and now it's up and running. added the live_get.png screenshot.
 
 So to sum it up. I still need help in the alias part to pass the argument as "native-country" not "native_country"
+
+/// new review
+
+Thanks for the comments
+I have forgotten about the pytest for the main. I have corrected that
+

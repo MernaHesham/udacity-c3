@@ -1,6 +1,9 @@
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
+def to_format(string: str) -> str:
+    return '-'.join(word for word in string.split('_'))
+
 
 def process_data(
     X, categorical_features=[], label=None, training=True, encoder=None, lb=None
@@ -51,6 +54,9 @@ def process_data(
         y = np.array([])
     print(categorical_features)
     print(X)
+
+
+    X.columns = X.columns.to_series().apply(to_format)
     X_categorical = X[categorical_features].values
     X_continuous = X.drop(*[categorical_features], axis=1)
     

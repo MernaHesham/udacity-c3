@@ -1,21 +1,25 @@
 import requests
-
+import json
 
 url = r'https://merna-demo-app.herokuapp.com/predict'
 
-salary_morethan50_sample =  [23.0, 122272.0, 13.0, 0.0, 0.0,
-30.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 
-0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 
-0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 
-0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+salary_lessthan50_sample =  {
+                "age": 50,
+                "workclass": "Self-emp-not-inc",
+                "flngt": 83311,
+                "education": "Bachelors",
+                "education-num": 13,
+                "marital-status": "Married-civ-spouse",
+                "occupation": "Exec-managerial",
+                "relationship": "Husband",
+                "race": "White",
+                "sex": "Male",
+                "capital-gain": 0,
+                "capital-loss": 0,
+                "hours-per-week": 13,
+                "native-country": "United-States"
+            }
 
-data = {"input_row": salary_morethan50_sample}
-
-resp = requests.post(url, json=data)
+resp = requests.post(url, data=json.dumps(salary_lessthan50_sample))
 
 print(resp.text)

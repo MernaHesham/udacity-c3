@@ -45,14 +45,14 @@ def test_get_path():
 
 
 def test_post_path_1():
-    input_dict = {"input": salary_lessthan50_sample}
+    input_dict = salary_lessthan50_sample
     r = client.post("/predict", json=input_dict)
     assert r.status_code == 200
-    assert json.loads(r.text)["Salary"] == "> 50k"
+    assert json.loads(r.text)["Income"] == "<=50k"
 
 def test_post_path_2():
-    input_dict = {"input_row": salary_morethan50_sample}
+    input_dict = salary_morethan50_sample
     r = client.post("/predict", json=input_dict)
     assert r.status_code == 200
-    assert json.loads(r.text)["Salary"] == "<= 50k"
+    assert json.loads(r.text)["Income"] == "<=50k"
 

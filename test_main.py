@@ -22,19 +22,19 @@ salary_lessthan50_sample =  {
             }
 
 salary_morethan50_sample =  {
-                "age": 52,
-                "workclass": "Self-emp-not-inc",
-                "flngt": 209642,
-                "education": "HS-grad",
-                "education-num": 9,
-                "marital-status": "Married-civ-spouse",
-                "occupation": "Exec-managerial",
-                "relationship": "Husband",
+                "age": 43,
+                "workclass": "Federal-gov",
+                "flngt": 410867,
+                "education": "Doctorate",
+                "education-num": 16,
+                "marital-status": "Never-married",
+                "occupation": "Prof-specialty",
+                "relationship": "Not-in-family",
                 "race": "White",
-                "sex": "Male",
+                "sex": "Female",
                 "capital-gain": 0,
                 "capital-loss": 0,
-                "hours-per-week": 45,
+                "hours-per-week": 50,
                 "native-country": "United-States"
             }
 

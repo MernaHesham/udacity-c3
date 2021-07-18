@@ -13,3 +13,7 @@ second, I added the param you said in the config part of the post request "allow
 I still pass them like "native_country" instead of "native-country". 
 
 for the next rubric. I added the dict data as suggested.
+
+I have fixed the heroku app and now it's up and running. added the live_get.png screenshot.
+
+So to sum it up. I still need help in the alias part to pass the argument as "native-country" not "native_country"

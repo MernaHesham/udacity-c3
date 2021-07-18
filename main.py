@@ -2,7 +2,7 @@ from fastapi import FastAPI, Body
 from joblib import load
 from model import inference
 from data import process_data
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List
 import pandas as pd
 import os
@@ -31,24 +31,25 @@ def to_format(string: str) -> str:
     return '-'.join(word for word in string.split('_'))
 
 class features(BaseModel):
-    age: int
-    workclass: str
-    flngt: int
-    education: str
-    education_num: int
-    marital_status: str
-    occupation: str
-    relationship: str
-    race: str
-    sex: str
-    capital_gain: int
-    capital_loss: int
-    hours_per_week: int
-    native_country: str 
+    age: int = Field(example=50)
+    workclass: str = Field(example='45')
+    flngt: int = Field(example=45)
+    education: str = Field(example='45')
+    education_num: int = Field(example=45)
+    marital_status: str = Field(example='45')
+    occupation: str = Field(example='45')
+    relationship: str = Field(example='45')
+    race: str = Field(example='45')
+    sex: str = Field(example='45')
+    capital_gain: int = Field(example=45)
+    capital_loss: int = Field(example=45)
+    hours_per_week: int = Field(example=45)
+    native_country: str = Field(example='45')
 
     class Config:
         # to change the col names into the formated params
         alias_generator = to_format
+        allow_population_by_field_name = True
         
         
 
@@ -56,12 +57,11 @@ class features(BaseModel):
 async def welcome():
     return {"msg": f"Hello there!"}
 
-
-@app.post("/predict")
-def inference( X: features = Body(default= True,
+'''
+= Body(default= True,
     examples={
-        "normal": {
-            "summary": "A normal example",
+        "normal2": {
+            "summary": "A normal2 example",
             "description": "A **normal** item works correctly.",
             "value": {
                 "age": 50,
@@ -84,11 +84,11 @@ def inference( X: features = Body(default= True,
             "summary": "An example with converted data",
             "description": "FastAPI can convert price `strings` to actual `numbers` automatically",
             "value": {
-                "age": 51,
+                "age": 52,
                 "workclass": "Self-emp-not-inc",
-                "flngt": 83311,
-                "education": "Bachelors",
-                "education-num": 13,
+                "flngt": 209642,
+                "education": "HS-grad",
+                "education-num": 9,
                 "marital-status": "Married-civ-spouse",
                 "occupation": "Exec-managerial",
                 "relationship": "Husband",
@@ -96,13 +96,14 @@ def inference( X: features = Body(default= True,
                 "sex": "Male",
                 "capital-gain": 0,
                 "capital-loss": 0,
-                "hours-per-week": 13,
+                "hours-per-week": 45,
                 "native-country": "United-States"
             },
         }
     },
-
-)):
+'''
+@app.post("/predict")
+def inference( X: features):
     
     data_dict = X.dict()
     model = load('model.joblib')

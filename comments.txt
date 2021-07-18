@@ -1,0 +1,15 @@
+thanks for the comments
+I have modified the simple-action.yml and now the action runs without errors
+I have added dvc dag screenshot for the required files.
+
+In the model building I don't know why you didn't pass this rubric. The rubric exactly says I complete the functions and the script should "..takes in the data, processes it, trains the model, and saves it and the encoder". No metrics saved for the test data.
+ALso the rubric following it why you didn't pass it ??. I already implemented the three unit tests and you said in the comment that I did it "You implemented three tests that check for the expected return type of your functions." 
+
+I have added the metrics in model card.
+
+The most important step is the creation of the API. I did as what you said and included the Field example instead of  the Body examples. 
+first, Now I don't know how to insert multiple examples with this Field you said. I was able to do it easily with the body. so what is the solution to this Field you suggested??
+second, I added the param you said in the config part of the post request "allow_population_by_field_name = True". It did not solve the problem. I still can't apply the alias to what is passed to the post request. 
+I still pass them like "native_country" instead of "native-country". 
+
+for the next rubric. I added the dict data as suggested.

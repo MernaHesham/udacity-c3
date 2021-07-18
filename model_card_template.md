@@ -15,8 +15,4 @@ The data used for tranining is census data.
 evaluation data is 20 percent of the training data
 
 ## Metrics
-
-
-## Ethical Considerations
-
-## Caveats and Recommendations
+precision is 0.7056910569105691 and recall is 0.2700684505289359 

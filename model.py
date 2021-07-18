@@ -60,21 +60,21 @@ def inference(model, X):
     return model.predict(X)
 
 def slice_metrics(test_data, cat_features, model, encoder, lb):
-    print("_______slice____")
-    print('test data')
-    print(test_data)
-    print('feature: ', cat_features[1])
+    #print("_______slice____")
+    #print('test data')
+    #print(test_data)
+    #print('feature: ', cat_features[1])
 
     with open('slice_output.txt', 'w') as f:
         for cat in range(len(cat_features)):
             f.write('\n for {} \n'.format(cat_features[cat]))
 
             for cls in test_data[cat_features[cat]].unique():
-                print("for ", cls)
+                #print("for ", cls)
 
                 df_feature = test_data[test_data[cat_features[cat]]==cls]
-                print('sliced df: ')
-                print(df_feature)
+                #print('sliced df: ')
+                #print(df_feature)
 
                 X_test, y_test, encoder,lb = process_data(
                 df_feature, categorical_features=cat_features, label="salary", training=False, encoder= encoder, lb= lb
@@ -82,9 +82,9 @@ def slice_metrics(test_data, cat_features, model, encoder, lb):
 
                 preds = inference(model, X_test)
                 precision, recall, fbeta = compute_model_metrics(y_test, preds)
-                print("for {} precision is {} and recall is {}".format(cls, precision, recall))
+                #print("for {} precision is {} and recall is {}".format(cls, precision, recall))
                 f.write("for {} precision is {} and recall is {} \n".format(cls, precision, recall))
-                print("-------------")
+                #print("-------------")
 
 
     

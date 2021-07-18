@@ -69,4 +69,5 @@ jobs:
       - name: Test with pytest
         run: |
           pytest test_ml.py
+          pytest test_main.py
 

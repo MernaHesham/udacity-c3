@@ -4,3 +4,5 @@
     url = gdrive://1Fk0ZzMvVGgjUNE-_poH0P4gcaQ79chFk
 ['remote "myremote"']
     url = s3://udacity-mlops/data
+    access_key_id = AKIAYNCNGP3FCEYHDL43
+    secret_access_key = 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

@@ -64,9 +64,9 @@ jobs:
         
       - name: pull dvc
         run: |
-          dvc pull
+          dvc pull -f
           
       - name: Test with pytest
         run: |
-          pytest
+          pytest test_ml.py
 
